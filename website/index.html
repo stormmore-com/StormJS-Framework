@@ -134,20 +134,31 @@
                 <div class="quickstart-step">
                     <div class="step-number">2</div>
                     <h3>Create a Component</h3>
-                    <p>Write your first component:</p>
+                    <p>Create a complete HTML file (e.g., index.html) with your first component:</p>
                     <div class="code-block">
-                        <pre><code>&lt;x-counter&gt;
-  &lt;button x-click="increment"&gt;Click me&lt;/button&gt;
-  &lt;div&gt;Count: {{count}}&lt;/div&gt;
-&lt;/x-counter&gt;
+                        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;My First BoltJS App&lt;/title&gt;
+  &lt;script src="https://cdn.jsdelivr.net/gh/stormmoredev/bolt-js-framework@latest/dist/bolt.min.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;x-counter&gt;
+    &lt;button x-click="increment"&gt;Click me&lt;/button&gt;
+    &lt;div&gt;Count: {{count}}&lt;/div&gt;
+  &lt;/x-counter&gt;
 
-&lt;script&gt;
-  function Counter(self) {
-    self.count = 0;
-    self.increment = () => self.count++;
-  }
-  $(Counter);
-&lt;/script&gt;</code></pre>
+  &lt;script&gt;
+    function Counter(self) {
+      self.count = 0;
+      self.increment = () => self.count++;
+    }
+    $(Counter);
+  &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
                         <button class="copy-btn">
                             <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                                 <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
