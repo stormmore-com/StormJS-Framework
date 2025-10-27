@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Binding - BoltJS Example</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="example-styles.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stormmoredev/bolt-js-framework@latest/dist/bolt.min.js"></script>
+    <style>
+        .form-grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-group label {
+            font-weight: 600;
+            color: var(--text-primary);
+            font-size: 0.875rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .radio-group, .checkbox-group {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .radio-group label, .checkbox-group label {
+            font-weight: 400;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+        }
+
+        input[type="radio"], input[type="checkbox"] {
+            cursor: pointer;
+        }
+
+        .live-preview {
+            background: var(--bg-light);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 1.5rem;
+        }
+
+        .live-preview h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .preview-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--border-color);
+            font-size: 0.875rem;
+        }
+
+        .preview-item:last-child {
+            border-bottom: none;
+        }
+
+        .preview-item strong {
+            color: var(--text-secondary);
+        }
+
+        .preview-item span {
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        .form-result {
+            background: white;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            border: 1px solid var(--border-color);
+            min-height: 100px;
+        }
+
+        .form-result div {
+            padding: 0.25rem 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.875rem;
+            color: var(--text-primary);
+        }
+
+        .button-group {
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .button-group {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="example-nav">
+        <div class="container">
+            <a href="../index.html" class="back-link">
+                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path d="M19 12H5M12 19l-7-7 7-7"/>
+                </svg>
+                Back to Home
+            </a>
+            <div class="example-title">Form Binding Example</div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="example-container">
+        <header class="example-header">
+            <h1>Form Data Binding</h1>
+            <p>Two-way data binding with forms, real-time validation, and FormData collection for easy submission.</p>
+        </header>
+
+        <!-- Live Demo -->
+        <section class="demo-section">
+            <h2>Live Demo</h2>
+            <p class="mb-3">Fill out the form below and watch the live preview update in real-time!</p>
+
+            <x-form-component>
+                <form>
+                    <div class="form-grid">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>First Name</label>
+                                <input type="text" name="firstname" value="{{name}}" placeholder="John" />
+                            </div>
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input type="email" name="email" value="{{email}}" placeholder="john@example.com" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>About Yourself</label>
+                            <textarea name="about" rows="3" placeholder="Tell us about yourself...">{{about}}</textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Profession</label>
+                            <select name="profession" x-selected="role">
+                                <option value="">Select one</option>
+                                <option value="Developer">Developer</option>
+                                <option value="Designer">Designer</option>
+                                <option value="Manager">Manager</option>
+                                <option value="Tester">Tester</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Do you like programming?</label>
+                            <div class="checkbox-group">
+                                <label>
+                                    <input type="checkbox" name="programming" value="1" x-checked="programming" />
+                                    Yes, I love it!
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Gender</label>
+                            <div class="radio-group">
+                                <label>
+                                    <input type="radio" name="gender" value="Male" x-checked="gender" />
+                                    Male
+                                </label>
+                                <label>
+                                    <input type="radio" name="gender" value="Female" x-checked="gender" />
+                                    Female
+                                </label>
+                                <label>
+                                    <input type="radio" name="gender" value="Other" x-checked="gender" />
+                                    Other
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="button-group">
+                            <button type="button" x-click="print">Show FormData</button>
+                            <button type="button" x-click="reset">Reset Form</button>
+                        </div>
+                    </div>
+
+                    <div class="live-preview">
+                        <h3>Live Preview (Real-time binding)</h3>
+                        <div class="preview-item"><strong>Name:</strong> <span>{{name}}</span></div>
+                        <div class="preview-item"><strong>Email:</strong> <span>{{email}}</span></div>
+                        <div class="preview-item"><strong>About:</strong> <span>{{about}}</span></div>
+                        <div class="preview-item"><strong>Profession:</strong> <span>{{role}}</span></div>
+                        <div class="preview-item"><strong>Likes Programming:</strong> <span>{{programming}}</span></div>
+                        <div class="preview-item"><strong>Gender:</strong> <span>{{gender}}</span></div>
+                    </div>
+
+                    <div id="form-result" class="form-result"></div>
+                </form>
+            </x-form-component>
+        </section>
+
+        <!-- HTML Code -->
+        <section class="code-section">
+            <div class="code-section-header">
+                <h3>HTML Template</h3>
+            </div>
+            <div class="code-block">
+                <pre><code>&lt;x-form-component&gt;
+  &lt;form&gt;
+    &lt;!-- Text Input --&gt;
+    &lt;input type="text" name="firstname" value="{{name}}" /&gt;
+
+    &lt;!-- Email Input --&gt;
+    &lt;input type="email" name="email" value="{{email}}" /&gt;
+
+    &lt;!-- Textarea --&gt;
+    &lt;textarea name="about"&gt;{{about}}&lt;/textarea&gt;
+
+    &lt;!-- Select Dropdown --&gt;
+    &lt;select name="profession" x-selected="role"&gt;
+      &lt;option value="Developer"&gt;Developer&lt;/option&gt;
+      &lt;option value="Designer"&gt;Designer&lt;/option&gt;
+    &lt;/select&gt;
+
+    &lt;!-- Checkbox --&gt;
+    &lt;input type="checkbox" name="programming"
+           value="1" x-checked="programming" /&gt;
+
+    &lt;!-- Radio Buttons --&gt;
+    &lt;input type="radio" name="gender"
+           value="Male" x-checked="gender" /&gt;
+    &lt;input type="radio" name="gender"
+           value="Female" x-checked="gender" /&gt;
+
+    &lt;button type="button" x-click="print"&gt;
+      Show FormData
+    &lt;/button&gt;
+  &lt;/form&gt;
+&lt;/x-form-component&gt;</code></pre>
+                <button class="copy-btn" onclick="copyCode(this)">
+                    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                    </svg>
+                </button>
+            </div>
+        </section>
+
+        <!-- JavaScript Code -->
+        <section class="code-section">
+            <div class="code-section-header">
+                <h3>JavaScript Component</h3>
+            </div>
+            <div class="code-block">
+                <pre><code>function FormComponent(self) {
+  // Initialize form data
+  self.name = "";
+  self.email = "";
+  self.about = "";
+  self.role = "";
+  self.gender = null;
+  self.programming = false;
+
+  // Print FormData
+  self.print = () => {
+    const formResult = self.find('#form-result');
+    formResult.setHtml('&lt;strong&gt;FormData Contents:&lt;/strong&gt;&lt;br&gt;');
+
+    const formData = self.find('form').formData();
+    for (let [key, value] of formData) {
+      formResult.appendHtml(`&lt;div&gt;${key}: ${value}&lt;/div&gt;`);
+    }
+  }
+
+  // Reset form
+  self.reset = () => {
+    self.name = "";
+    self.email = "";
+    self.about = "";
+    self.role = "";
+    self.gender = null;
+    self.programming = false;
+    self.find('#form-result').setHtml('');
+  }
+}
+
+$(FormComponent);</code></pre>
+                <button class="copy-btn" onclick="copyCode(this)">
+                    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                    </svg>
+                </button>
+            </div>
+        </section>
+
+        <!-- Key Concepts -->
+        <section class="demo-section">
+            <h2>Key Concepts</h2>
+            <ul style="line-height: 2; color: var(--text-secondary);">
+                <li><strong>Two-Way Binding:</strong> <code>value="{{property}}"</code> automatically syncs input with component state</li>
+                <li><strong>x-checked Directive:</strong> For checkboxes and radio buttons</li>
+                <li><strong>x-selected Directive:</strong> For select dropdowns</li>
+                <li><strong>formData():</strong> Easy form data collection with <code>self.find('form').formData()</code></li>
+                <li><strong>Real-time Updates:</strong> Changes instantly reflect in the UI</li>
+                <li><strong>No Manual DOM Manipulation:</strong> BoltJS handles all updates automatically</li>
+            </ul>
+        </section>
+    </div>
+
+    <!-- Component Scripts -->
+    <script type="text/javascript">
+        function FormComponent(self) {
+            self.name = "";
+            self.email = "";
+            self.about = "";
+            self.role = "";
+            self.gender = null;
+            self.programming = false;
+
+            self.print = () => {
+                const formResult = self.find('#form-result');
+                formResult.setHtml('<strong>FormData Contents:</strong><br>');
+                const formData = self.find('form').formData();
+                for (let [key, value] of formData) {
+                    formResult.appendHtml(`<div>${key}: ${value}</div>`);
+                }
+            }
+
+            self.reset = () => {
+                self.name = "";
+                self.email = "";
+                self.about = "";
+                self.role = "";
+                self.gender = null;
+                self.programming = false;
+                self.find('#form-result').setHtml('');
+            }
+        }
+
+        $(FormComponent);
+
+        function copyCode(button) {
+            const codeBlock = button.previousElementSibling;
+            const code = codeBlock.textContent.trim();
+
+            navigator.clipboard.writeText(code).then(() => {
+                const originalHTML = button.innerHTML;
+                button.innerHTML = '<svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>';
+                button.style.background = 'rgba(34, 197, 94, 0.2)';
+
+                setTimeout(() => {
+                    button.innerHTML = originalHTML;
+                    button.style.background = '';
+                }, 2000);
+            });
+        }
+    </script>
+</body>
+</html>
