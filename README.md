@@ -1,6 +1,8 @@
 # What is BoltJS Framework?
-BoltJS is a simple tool for building modern web applications.  
-It’s no harder to learn than jQuery and doesn’t require any additional tools.
+BoltJS is a simple tool for building modern web applications.
+It's no harder to learn than jQuery and doesn't require any additional tools.
+
+🌐 **Website:** [boltjs.dev](https://boltjs.dev)
 
 ## How is it different from other frameworks?
 BoltJS was created so that anyone familiar with JavaScript can build applications without the need for extra backend or frontend tooling.  
@@ -59,12 +61,23 @@ Simply include the source file:
 ```
 
 ## Getting Started
-The best way to learn BoltJS is by going through the guide.  
-It covers all the common use cases for modern web applications.
+The best way to learn BoltJS is by exploring our interactive examples and comprehensive guide.
 
-👉 [Guide & Examples](https://stormmoredev.github.io/bolt-js-framework/)
+👉 **[Visit boltjs.dev](https://boltjs.dev)** - Official website with live demos
 
-## Documentation
-Before diving into the documentation, make sure to read the guide first.
+### Additional Resources
+- 📖 [Complete Guide](https://stormmoredev.github.io/bolt-js-framework/) - Step-by-step tutorials
+- 📚 [Documentation](https://stormmoredev.github.io/bolt-js-framework/docs) - Detailed API reference
+- 🎯 [Live Examples](https://boltjs.dev/#examples) - Interactive demos you can try
+- 💻 [GitHub Repository](https://github.com/stormmoredev/bolt-js-framework) - Source code and issues
 
-👉 [Documentation](https://stormmoredev.github.io/bolt-js-framework/docs)  
+## Community & Support
+
+- 🌐 **Official Website:** [boltjs.dev](https://boltjs.dev)
+- 💬 **Discussions:** [GitHub Discussions](https://github.com/stormmoredev/bolt-js-framework/discussions)
+- 🐛 **Issues:** [GitHub Issues](https://github.com/stormmoredev/bolt-js-framework/issues)
+- ⭐ **Star us on GitHub** to show your support!
+
+## License
+
+MIT License - feel free to use BoltJS in your projects!
