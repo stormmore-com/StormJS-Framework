@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stormmoredev/bolt-js-framework@latest/dist/bolt.min.js"></script>
 </head>
 <body>
     <!-- Navigation -->
@@ -20,6 +21,7 @@
             <div class="nav-links">
                 <a href="#features">Features</a>
                 <a href="#quickstart">Quick Start</a>
+                <a href="#livedemo">Live Demo</a>
                 <a href="#examples">Examples</a>
                 <a href="https://stormmoredev.github.io/bolt-js-framework/" target="_blank">Documentation</a>
                 <a href="https://github.com/stormmoredev/bolt-js-framework" target="_blank" class="github-link">
@@ -163,6 +165,121 @@
         </div>
     </section>
 
+    <!-- Live Demo Section -->
+    <section id="livedemo" class="live-demo">
+        <div class="container">
+            <h2 class="section-title">Try It Live - TODO App</h2>
+            <p class="section-subtitle">See BoltJS in action! This is a real, working TODO list built with just a few lines of code.</p>
+
+            <div class="demo-wrapper">
+                <div class="demo-container">
+                    <div class="demo-app">
+                        <x-todo-form>
+                            <input type="text" placeholder="Add a new task..." value="{{todo}}" x-enter-pressed="add"/>
+                            <button x-click="add" class="add-btn">Add Task</button>
+                        </x-todo-form>
+                        <x-todo-list>
+                            <div class="todo-stats">
+                                <span>📝 Total: <strong>{{count}}</strong></span>
+                                <span>✅ Done: <strong>{{done}}</strong></span>
+                                <span>⏳ Left: <strong>{{left}}</strong></span>
+                            </div>
+                            <div x-list="items"></div>
+                        </x-todo-list>
+                    </div>
+                </div>
+
+                <div class="demo-code">
+                    <div class="code-tabs">
+                        <button class="code-tab active" data-tab="html">HTML</button>
+                        <button class="code-tab" data-tab="js">JavaScript</button>
+                    </div>
+
+                    <div class="code-tab-content active" data-content="html">
+                        <div class="code-block">
+                            <pre><code>&lt;x-todo-form&gt;
+  &lt;input type="text" placeholder="Add a new task..."
+         value="{{todo}}" x-enter-pressed="add"/&gt;
+  &lt;button x-click="add"&gt;Add Task&lt;/button&gt;
+&lt;/x-todo-form&gt;
+
+&lt;x-todo-list&gt;
+  &lt;div&gt;Total: {{count}} | Done: {{done}} | Left: {{left}}&lt;/div&gt;
+  &lt;div x-list="items"&gt;&lt;/div&gt;
+&lt;/x-todo-list&gt;</code></pre>
+                            <button class="copy-btn">
+                                <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="code-tab-content" data-content="js">
+                        <div class="code-block">
+                            <pre><code>function TodoItem(self, name) {
+  self.name = name;
+  self.done = false;
+
+  self.delete = () => self.emit('del-todo', self);
+  self.changed = () => {
+    self.done = !self.done;
+    self.emit('task-changed');
+  };
+
+  self.template = `
+    &lt;div class="todo-item"&gt;
+      &lt;input type="checkbox" x-change="changed" /&gt;
+      &lt;div x-class="done:done"&gt;{{name}}&lt;/div&gt;
+      &lt;button x-click="delete"&gt;Delete&lt;/button&gt;
+    &lt;/div&gt;`;
+}
+
+function TodoForm(self) {
+  self.todo = "";
+  self.add = () => {
+    if (!self.todo) return;
+    self.emit("new-todo", self.todo);
+    self.todo = "";
+  }
+}
+
+function TodoList(self) {
+  self.items = new WatchList([]);
+  self.left = self.done = self.count = 0;
+
+  self.countTasks = () => {
+    self.count = self.items.count();
+    self.done = self.items.count(x => x.done);
+    self.left = self.count - self.done;
+  };
+
+  self.on('new-todo', todo => {
+    self.items.add($(TodoItem, todo));
+    self.countTasks();
+  });
+  self.on('del-todo', todo => {
+    self.items.delete(x => x === todo);
+    self.countTasks();
+  });
+  self.on('task-changed', self.countTasks);
+}
+
+$([TodoForm, TodoList, TodoItem]);</code></pre>
+                            <button class="copy-btn">
+                                <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Examples Section -->
     <section id="examples" class="examples">
         <div class="container">
@@ -245,6 +362,59 @@
             </div>
         </div>
     </footer>
+
+    <!-- BoltJS Todo Components -->
+    <script type="text/javascript">
+        function TodoItem(self, name) {
+            self.name = name;
+            self.done = false;
+
+            self.delete = () => self.emit('del-todo', self);
+            self.changed = () => {
+                self.done = !self.done;
+                self.emit('task-changed');
+            };
+
+            self.template = `
+                <div class="todo-item">
+                    <input type="checkbox" x-change="changed" />
+                    <span x-class="done:done">{{name}}</span>
+                    <button x-click="delete" class="delete-btn">Delete</button>
+                </div>`;
+        }
+
+        function TodoForm(self) {
+            self.todo = "";
+            self.add = () => {
+                if (!self.todo) return;
+                self.emit("new-todo", self.todo);
+                self.todo = "";
+            }
+        }
+
+        function TodoList(self) {
+            self.items = new WatchList([]);
+            self.left = self.done = self.count = 0;
+
+            self.countTasks = () => {
+                self.count = self.items.count();
+                self.done = self.items.count(x => x.done);
+                self.left = self.count - self.done;
+            };
+
+            self.on('new-todo', todo => {
+                self.items.add($(TodoItem, todo));
+                self.countTasks();
+            });
+            self.on('del-todo', todo => {
+                self.items.delete(x => x === todo);
+                self.countTasks();
+            });
+            self.on('task-changed', self.countTasks);
+        }
+
+        $([TodoForm, TodoList, TodoItem]);
+    </script>
 
     <script src="js/main.js"></script>
 </body>

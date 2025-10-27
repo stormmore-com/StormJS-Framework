@@ -263,6 +263,26 @@ if ('loading' in HTMLImageElement.prototype) {
 }
 
 // ==========================================
+// Code Tab Switcher for Live Demo
+// ==========================================
+const codeTabs = document.querySelectorAll('.code-tab');
+const codeTabContents = document.querySelectorAll('.code-tab-content');
+
+codeTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+        const targetTab = tab.getAttribute('data-tab');
+
+        // Remove active class from all tabs and contents
+        codeTabs.forEach(t => t.classList.remove('active'));
+        codeTabContents.forEach(c => c.classList.remove('active'));
+
+        // Add active class to clicked tab and corresponding content
+        tab.classList.add('active');
+        document.querySelector(`.code-tab-content[data-content="${targetTab}"]`).classList.add('active');
+    });
+});
+
+// ==========================================
 // Console Easter Egg
 // ==========================================
 console.log('%c⚡ BoltJS Framework', 'font-size: 24px; font-weight: bold; color: #3b82f6;');
