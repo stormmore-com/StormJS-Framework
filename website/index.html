@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="BoltJS - A simple, powerful JavaScript framework for building modern web applications. No build tools required.">
+    <title>BoltJS Framework - Simple. Powerful. Complete.</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <span class="logo">⚡ BoltJS</span>
+            </div>
+            <div class="nav-links">
+                <a href="#features">Features</a>
+                <a href="#quickstart">Quick Start</a>
+                <a href="#examples">Examples</a>
+                <a href="https://stormmoredev.github.io/bolt-js-framework/" target="_blank">Documentation</a>
+                <a href="https://github.com/stormmoredev/bolt-js-framework" target="_blank" class="github-link">
+                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                    </svg>
+                    GitHub
+                </a>
+            </div>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    Build modern web apps<br>
+                    <span class="gradient-text">the simple way</span>
+                </h1>
+                <p class="hero-subtitle">
+                    BoltJS is a lightweight JavaScript framework that's as easy to learn as jQuery,
+                    but powerful enough for modern web applications. No build tools required.
+                </p>
+                <div class="hero-cta">
+                    <a href="#quickstart" class="btn btn-primary">Get Started</a>
+                    <a href="https://stormmoredev.github.io/bolt-js-framework/" class="btn btn-secondary">View Guide</a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <div class="stat-value">~20KB</div>
+                        <div class="stat-label">Minified</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value">0</div>
+                        <div class="stat-label">Dependencies</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value">30s</div>
+                        <div class="stat-label">To First Component</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <h2 class="section-title">Why BoltJS?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📦</div>
+                    <h3>Everything in One File</h3>
+                    <p>All you need is a single JavaScript file (~20KB). No npm, no webpack, no complicated setup.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Zero Build Tools</h3>
+                    <p>Just a text editor and a browser. Write code and see it run instantly. No compilation step.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3>Easy to Learn</h3>
+                    <p>If you know JavaScript, you already know BoltJS. Create your first component in 30 seconds.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🧩</div>
+                    <h3>Component-Based</h3>
+                    <p>Build applications using reusable, encapsulated components with their own state and behavior.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔌</div>
+                    <h3>Seamless Integration</h3>
+                    <p>Drop it into any existing HTML page. Perfect for progressive enhancement.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🚀</div>
+                    <h3>SEO-Friendly</h3>
+                    <p>Supports server-side rendering (SSR) for better search engine visibility and performance.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Start Section -->
+    <section id="quickstart" class="quickstart">
+        <div class="container">
+            <h2 class="section-title">Get Started in Seconds</h2>
+            <div class="quickstart-content">
+                <div class="quickstart-step">
+                    <div class="step-number">1</div>
+                    <h3>Include BoltJS</h3>
+                    <p>Add a single script tag to your HTML:</p>
+                    <div class="code-block">
+                        <pre><code>&lt;script src="https://cdn.jsdelivr.net/gh/stormmoredev/bolt-js-framework@latest/dist/bolt.min.js"&gt;&lt;/script&gt;</code></pre>
+                        <button class="copy-btn" data-clipboard="&lt;script src=&quot;https://cdn.jsdelivr.net/gh/stormmoredev/bolt-js-framework@latest/dist/bolt.min.js&quot;&gt;&lt;/script&gt;">
+                            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="quickstart-step">
+                    <div class="step-number">2</div>
+                    <h3>Create a Component</h3>
+                    <p>Write your first component:</p>
+                    <div class="code-block">
+                        <pre><code>&lt;x-counter&gt;
+  &lt;button x-click="increment"&gt;Click me&lt;/button&gt;
+  &lt;div&gt;Count: {{count}}&lt;/div&gt;
+&lt;/x-counter&gt;
+
+&lt;script&gt;
+  function Counter(self) {
+    self.count = 0;
+    self.increment = () => self.count++;
+  }
+  $(Counter);
+&lt;/script&gt;</code></pre>
+                        <button class="copy-btn">
+                            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="quickstart-step">
+                    <div class="step-number">3</div>
+                    <h3>That's It!</h3>
+                    <p>Open your HTML file in a browser. Your component is live and reactive!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Examples Section -->
+    <section id="examples" class="examples">
+        <div class="container">
+            <h2 class="section-title">See It in Action</h2>
+            <div class="examples-grid">
+                <div class="example-card">
+                    <h3>Todo List</h3>
+                    <p>A complete todo application with add, delete, and toggle functionality.</p>
+                    <a href="https://stormmoredev.github.io/bolt-js-framework/todo.html" class="example-link" target="_blank">
+                        View Demo →
+                    </a>
+                </div>
+                <div class="example-card">
+                    <h3>Modal Dialog</h3>
+                    <p>Reusable confirmation modal with dynamic content and event handling.</p>
+                    <a href="https://stormmoredev.github.io/bolt-js-framework/modal.html" class="example-link" target="_blank">
+                        View Demo →
+                    </a>
+                </div>
+                <div class="example-card">
+                    <h3>Form Binding</h3>
+                    <p>Two-way data binding with forms and real-time validation.</p>
+                    <a href="https://stormmoredev.github.io/bolt-js-framework/form.html" class="example-link" target="_blank">
+                        View Demo →
+                    </a>
+                </div>
+                <div class="example-card">
+                    <h3>Dynamic Lists</h3>
+                    <p>Reactive lists with WatchList for automatic DOM updates.</p>
+                    <a href="https://stormmoredev.github.io/bolt-js-framework/watch-list.html" class="example-link" target="_blank">
+                        View Demo →
+                    </a>
+                </div>
+            </div>
+            <div class="examples-cta">
+                <a href="https://stormmoredev.github.io/bolt-js-framework/" class="btn btn-outline">View All Examples</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to build something amazing?</h2>
+                <p>Start creating modern web applications without the complexity of traditional frameworks.</p>
+                <div class="cta-buttons">
+                    <a href="https://stormmoredev.github.io/bolt-js-framework/" class="btn btn-primary">Read the Guide</a>
+                    <a href="https://github.com/stormmoredev/bolt-js-framework" class="btn btn-secondary">View on GitHub</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="logo">⚡ BoltJS</span>
+                    <p>Simple. Powerful. Complete.</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Resources</h4>
+                        <a href="https://stormmoredev.github.io/bolt-js-framework/">Guide</a>
+                        <a href="https://stormmoredev.github.io/bolt-js-framework/docs">Documentation</a>
+                        <a href="https://github.com/stormmoredev/bolt-js-framework/tree/main/src">Examples</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Community</h4>
+                        <a href="https://github.com/stormmoredev/bolt-js-framework">GitHub</a>
+                        <a href="https://github.com/stormmoredev/bolt-js-framework/issues">Issues</a>
+                        <a href="https://github.com/stormmoredev/bolt-js-framework/discussions">Discussions</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 BoltJS Framework. Open source under MIT License.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
